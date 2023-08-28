@@ -1,0 +1,36 @@
+.wrapper {
+
+    h2 {
+        color: #5e96fc;
+        font: 600 20px Inter;
+        line-height: normal;
+    }
+
+    .item {
+        border-radius: 12px;
+        border: 1px solid;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 24px;
+    }
+
+    .salary {
+        font: 600 16px Inter;
+        line-height: 20px;
+        color: #232134
+    }
+
+    p {
+        color: #232134;
+        font: 400 16px Inter;
+    }
+
+    .img {
+        background-image: url('./assets/M.png');
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
