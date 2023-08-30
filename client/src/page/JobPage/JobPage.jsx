@@ -16,7 +16,8 @@ function JobPage() {
             <div className={style.wrapper}>
 
                 <Input icon={<IconSearch />}
-                    placeholder="Your email" rightSection={<Button>Search</Button>}
+                    placeholder="Введите название вакансии
+                " rightSection={<Button>Поиск</Button>}
                 />
                 <div>{arr.map((el, index) =>
                     <Link to={`/vacancy/${el.header}`} key={index}>
@@ -25,11 +26,12 @@ function JobPage() {
                             <h2>{el.header}</h2>
 
                             <div className={style.flex}>
-                                <p>{el.salary}</p>
+                                <p className={style.salary}>{el.salary}</p>
+                                <p className={style.point}>•</p>
                                 <p>{el.time}</p>
                             </div>
 
-                            <div className={style.flex}>
+                            <div className={style.map}>
                                 <div className={style.img}></div>
                                 <p>{el.city}</p>
                             </div>
