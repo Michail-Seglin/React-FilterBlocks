@@ -1,16 +1,19 @@
-import React from "react";
-import { Input, Button } from '@mantine/core'
+import React, { useState } from "react";
+import { Input, Button, Pagination } from '@mantine/core'
 import { IconSearch } from '@tabler/icons-react';
 import style from './jobPage.module.scss'
 import { Link } from 'react-router-dom'
+import card from '../storage/storage.json'
 
 
 function JobPage() {
 
-    const arr = [{ header: 'Менеджер-дизайнер', salary: 'з/п от 70000 rub', city: 'Новый Уренгой', time: 'Полный рабочий день' },
-    { header: 'Ведущий графический дизайнер НЕ УДАЛЕННО', salary: 'з/п от 80000 rub', city: 'Москва', time: 'Полный рабочий день' },
-    { header: 'Работник декорации, дизайнер (ТЦ Амбар)', salary: 'з/п 29000 rub', city: 'Самара', time: 'Сменный график работы' },
-    { header: 'Менеджер-дизайнер', salary: 'з/п 55000 - 95000 rub', city: 'Тюмень', time: 'Полный рабочий день' }]
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const size = 10;
+    const lastIndex = currentPage * size;
+    const firstIndex = lastIndex - size;
+    const currentCard = card.slice(firstIndex, lastIndex);
 
     return (
         <>
@@ -20,8 +23,8 @@ function JobPage() {
                     placeholder="Введите название вакансии
                 " rightSection={<Button>Поиск</Button>}
                 />
-                <div>{arr.map((el, index) =>
-                    <Link to={`/vacancy/${el.header}`} key={index}>
+                <div>{currentCard.map((el, index) =>
+                    <Link to={`/vacancy/${el.id}`} key={index}>
                         <div className={style.item} key={index} >
 
                             <h2>{el.header}</h2>
@@ -41,6 +44,15 @@ function JobPage() {
                 )}
                 </div>
             </div>
+
+            <Pagination
+                total={Math.ceil(card.length / size)}
+                position="center"
+                style={{ marginTop: "40px" }}
+                onChange={(card) => setCurrentPage(card)}
+            />
+
+
         </>
     )
 }
